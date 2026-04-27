@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "name": "Multi-Agent AI System",
+    "version": "1.0",
+    "description": "Production-grade cognitive pipeline with modular reasoning, memory, tools, and feedback",
+    "principles": [
+      "separation_of_concerns",
+      "conditional_execution",
+      "feedback_driven_adaptation",
+      "latency_awareness",
+      "graceful_failure"
+    ]
+  },
+  "stack": {
+    "runtime": "Bun",
+    "language": "TypeScript",
+    "frontend": {
+      "framework": "React/Next.js",
+      "state": "Zustand"
+    },
+    "datastores": {
+      "cache_queue": "Redis",
+      "persistent": "SQLite",
+      "vector": ["FAISS", "ChromaDB"]
+    },
+    "ai": {
+      "local": "Ollama",
+      "apis": ["OpenRouter (free tier)", "HuggingFace (free tier)"]
+    },
+    "devops": ["Docker", "Docker Compose"],
+    "observability": ["Prometheus", "Grafana"]
+  },
+  "pipeline": {
+    "flow": [
+      "user_input",
+      "intent_classifier",
+      "complexity_classifier",
+      "task_decomposer_dag",
+      "memory_router",
+      "prompt_compiler",
+      "llm_a_generator",
+      "confidence_gate",
+      "llm_b_critic_optional",
+      "refinement_loop",
+      "tool_router",
+      "output_validator",
+      "final_response",
+      "feedback_queue",
+      "learning_system"
+    ]
+  },
+  "components": {
+    "intent_classifier": {
+      "output": ["intent", "confidence"],
+      "fallback": "clarification"
+    },
+    "complexity_classifier": {
+      "output": ["score", "task_type"],
+      "controls": ["multi_sampling", "cot_prompt", "critic_activation"]
+    },
+    "task_decomposer": {
+      "type": "DAG",
+      "features": ["parallel_execution", "dependency_tracking"]
+    },
+    "memory_router": {
+      "strategy": ["BM25", "embedding_rerank"],
+      "token_cap": 800
+    },
+    "prompt_compiler": {
+      "modes": ["lean", "chain_of_thought", "few_shot"],
+      "inputs": ["task_graph", "memory", "session_register"]
+    },
+    "llm_a": {
+      "role": "generator",
+      "multi_sample": "conditional"
+    },
+    "confidence_gate": {
+      "metrics": ["entropy", "logprob"],
+      "routes": ["bypass_critic", "invoke_critic"]
+    },
+    "llm_b": {
+      "role": "critic",
+      "activation": "conditional"
+    },
+    "refinement_loop": {
+      "max_iterations": 3,
+      "exit": ["score_threshold", "minimal_delta"]
+    },
+    "tool_router": {
+      "paths": ["deterministic_bypass", "loop_reentry"]
+    },
+    "output_validator": {
+      "checks": ["format", "logic", "safety"],
+      "failure": ["reprocess", "clarify"]
+    },
+    "feedback_system": {
+      "collector": "async_queue",
+      "learning": "batch_update"
+    }
+  },
+  "frontend": {
+    "layers": ["presentation", "interaction", "state_management"],
+    "components": [
+      "chat_container",
+      "message_block",
+      "pipeline_visualizer",
+      "tool_panel",
+      "memory_inspector",
+      "feedback_panel"
+    ],
+    "communication": {
+      "protocols": ["REST", "WebSocket/SSE"],
+      "endpoints": ["/query", "/feedback", "/status"]
+    }
+  },
+  "orchestration": {
+    "engine": ["Temporal", "Ray", "Custom async DAG"],
+    "features": ["parallel_tasks", "retry", "checkpointing"]
+  },
+  "redis_usage": {
+    "session_store": true,
+    "queue": true,
+    "cache": true
+  },
+  "docker": {
+    "services": ["app", "redis", "vector_db"],
+    "scaling": "horizontal"
+  },
+  "non_functional": {
+    "performance": "<5s avg response",
+    "scalability": "horizontal",
+    "reliability": "retry + fallback",
+    "security": ["sanitize_input", "escape_output"]
+  },
+  "data_flow": [
+    "input_received",
+    "classified",
+    "decomposed",
+    "memory_retrieved",
+    "prompt_generated",
+    "llm_processed",
+    "validated",
+    "response_returned",
+    "feedback_logged"
+  ],
+  "risks": [
+    "misclassification",
+    "cost_explosion",
+    "latency_spikes",
+    "loop_instability"
+  ],
+  "mitigation": [
+    "confidence_thresholds",
+    "gated_execution",
+    "parallelization",
+    "iteration_limits"
+  ]
+}
